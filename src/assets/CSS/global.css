@@ -1,0 +1,14 @@
+/* 全局样式表 */
+html,
+body,
+#app {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+/* 设置验证规则提示 */
+.el-form-item__error{
+    color: red;
+    size: 16px;
+    font-weight: bold;
+}
