@@ -1,41 +1,44 @@
 <template>
-    <div>
-        <div class="wrap">
-        <div class="container">
-            <h1>Welcome</h1>
-            <!-- 登录form 表单区域 -->
-            <el-form label-width="0" :model="loginForm" :rules="loginFormRules" ref="loginFormRef">
-                <!-- 用户名 -->
-                <el-form-item prop="username" >
-                    <el-input prefix-icon="el-icon-user" placeholder="请输入用户名"
-                     v-model="loginForm.username" ></el-input>
-                </el-form-item>
-                <!-- 密码 -->
-                <el-form-item prop="password" >
-                    <el-input prefix-icon="el-icon-lock" placeholder="请输入密码"
-                     v-model="loginForm.password" type="password" ></el-input>
-                </el-form-item>
-                <!-- 按钮区域 -->
-                <el-form-item>
-                    <el-button type="primary" @click="login">登录</el-button>
-                    <el-button type="info" @click="resetLoginForm">重置</el-button>
-                </el-form-item>
-            </el-form>
-        </div>
-        <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
+  <div class="login_page">
+    <div class="wrap">
+      <div class="container">
+        <h1>Welcome</h1>
+        <!-- 登录form 表单区域 -->
+        <el-form label-width="0" :model="loginForm" :rules="loginFormRules" ref="loginFormRef">
+          <!-- 用户名 -->
+          <el-form-item prop="username">
+            <el-input prefix-icon="el-icon-user" placeholder="请输入用户名" v-model="loginForm.username"></el-input>
+          </el-form-item>
+          <!-- 密码 -->
+          <el-form-item prop="password">
+            <el-input
+              prefix-icon="el-icon-lock"
+              placeholder="请输入密码"
+              v-model="loginForm.password"
+              type="password"
+            ></el-input>
+          </el-form-item>
+          <!-- 按钮区域 -->
+          <el-form-item>
+            <el-button type="primary" @click="login">登录</el-button>
+            <el-button type="info" @click="resetLoginForm">重置</el-button>
+          </el-form-item>
+        </el-form>
+      </div>
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
     </div>
-    </div>
+  </div>
 </template>
 
 <script>
@@ -86,15 +89,15 @@ export default {
     }
 }
 </script>
-
 <style lang="less" scoped>
         * {
             box-sizing: border-box;
         }
-        body {
-            margin: 0; 
-            padding: 0;
+        .login_page {
             font: 16px/20px microsft yahei;
+            width: 100%;
+            height: 1600px;
+            background: linear-gradient(to bottom right,#50a3a2,#53e3a6);
         }
         .wrap {
             width: 100%;
@@ -104,8 +107,8 @@ export default {
             top: 50%;
             margin-top: -200px;
             opacity: 0.8;
-            background: linear-gradient(to bottom right,#50a3a2,#53e3a6);
-            background: -webkit-linear-gradient(to bottom right,#50a3a2,#53e3a6);
+            // background: linear-gradient(to bottom right,#50a3a2,#53e3a6);
+            // background: -webkit-linear-gradient(to bottom right,#50a3a2,#53e3a6);
         }
         .container {
             width: 400px;
@@ -266,3 +269,4 @@ export default {
             }
         }
 </style>
+ 
