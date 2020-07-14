@@ -53,7 +53,7 @@
             ></el-button>
             <!-- 设置按钮 -->
             <el-tooltip effect="dark" content="分配角色" placement="top-start" :enterable="false">
-              <el-button type="warning" icon="el-icon-setting" size="mini"></el-button>
+              <el-button type="warning" icon="el-icon-setting" size="mini" @click="ShowSetUserDialog(slot.row)"></el-button>
             </el-tooltip>
           </template>
         </el-table-column>
@@ -65,6 +65,9 @@
 
     <!-- 修改用户的对话框 -->
     <EditUserDialog ref="subEditUserDialog"></EditUserDialog>
+
+    <!-- 分配角色对话框 -->
+    <SetUserDialog ref="setUserDialog"></SetUserDialog>
 
     <!-- 分页区域 -->
     <el-pagination
@@ -83,6 +86,7 @@
 // 引入添加和编辑用户对话框的子组件
 import AddUserDialog from '.././dialog/AddUserDialog.vue'
 import EditUserDialog from '.././dialog/EditUserDialog.vue'
+import SetUserDialog from '.././dialog/SetUserDialog.vue'
 
 export default {
     data(){
@@ -165,11 +169,23 @@ export default {
             // 更新用户列表 和 提示用户删除成功
             this.getUserList()
             this.$message.success('删除用户信息成功!')
+        },
+        // 显示分配用户角色对话框
+        async ShowSetUserDialog(userInfo) {
+          // 将用户信息保存到子组件中
+          this.$refs.setUserDialog.userInfo = userInfo
+          // 在展示对话框之前，获取所有角色列表
+          const {data: res} = await this.$http.get('roles')
+          if(res.meta.status !== 200) return this.$message.error('获取角色列表失败!')
+          // 获取成功后赋值给子组件的rolesList
+          this.$refs.setUserDialog.rolesList = res.data
+          this.$refs.setUserDialog._data.setUserDialogVisible = true
         }
     },
     components: {
       AddUserDialog,
-      EditUserDialog
+      EditUserDialog,
+      SetUserDialog
     }
 }
 </script>
